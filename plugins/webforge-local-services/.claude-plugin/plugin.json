@@ -1,0 +1,15 @@
+{
+  "name": "webforge-local-services",
+  "version": "1.0.0",
+  "description": "WebForge vertical slice for local-services clients (plumber, dentist, lawyer, gym, HVAC, etc.). Discovery and local-tuned SEO-Strategist, plus WordPress build, Kinsta deploy, local SEO, and citations skills. Use for type=local-services, template=wordpress-theme, deployment_target=wp-hosting.",
+  "author": {
+    "name": "WebForge"
+  },
+  "keywords": [
+    "local-services",
+    "wordpress",
+    "kinsta",
+    "local-seo",
+    "citations"
+  ]
+}

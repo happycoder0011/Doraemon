@@ -1,0 +1,115 @@
+# project.config.yaml — ecommerce starter
+# Adjust, then validate with:
+#
+#   python3 <webforge-core>/scripts/validate_config.py <this-file>
+
+project:
+  name: ""
+  slug: ""
+  type: "ecommerce"
+  goals:
+    primary: "sales"
+    secondary:
+      - "rankings"
+      - "repeat-customers"
+  timeline: ""
+  start_date: ""
+
+# ── WHAT we build ───────────────────────────────────────────────────────────
+deliverables:
+  website:
+    required: true
+    pages:
+      - "home"
+      - "collections"
+      - "products"
+      - "about"
+      - "contact"
+      - "blog"
+      - "faq"
+      - "shipping"
+      - "returns"
+    template: "shopify-theme"
+    responsive: true
+    i18n: false                         # flip true if multi-region store
+    cms: "shopify"
+    cms_admin_user: ""
+  content:
+    blog_posts_initial: 8               # gift guides, comparisons, "how to choose"
+    service_pages: 0                    # N/A for ecommerce
+    landing_pages: 2                    # seasonal + comparison
+  seo:
+    technical_audit: true
+    keyword_research: true
+    ongoing_months: 12                  # ecommerce SEO is long game
+    local_seo: false                    # only for hybrid local-ecom
+    geo: []
+    languages: ["en"]
+  outreach:
+    backlink_campaign: true
+    citations_local: 0
+    guest_posts_per_month: 2
+  analytics:
+    gsc_setup: true
+    ga4_setup: true
+    monthly_reporting: true
+    dashboard: true
+
+# ── WHERE it runs ───────────────────────────────────────────────────────────
+infrastructure:
+  deployment_target: "shopify"          # Shopify handles its own hosting
+  hosting_provider: "shopify"
+  domain: ""
+  dns: "cloudflare"
+  email: "google_workspace"
+  cdn: "shopify-cdn"
+
+# ── HOW we operate ──────────────────────────────────────────────────────────
+operator:
+  expertise: "non-technical"
+  judgment_strength: "high"
+  language: "en"
+  preferences:
+    communication_style: "concise"
+    report_format: "pdf"
+    meeting_cadence: "biweekly"
+
+budget:
+  total_project_usd: 5000               # Growth-tier ecommerce build
+  monthly_retainer_usd: 800             # ongoing SEO + ads retainer
+  per_run_cap_usd: 50
+
+# ── BRAND ───────────────────────────────────────────────────────────────────
+brand:
+  existing_brand_kit: false
+  voice_doc: ""
+  tone:
+    - "confident"
+    - "helpful"
+    - "non-corporate"
+  avoid_words:
+    - "cheap"
+    - "discount"
+    - "luxury"                          # unless brand_tier == luxury
+    - "exclusive"
+
+# ── APPROVALS ──────────────────────────────────────────────────────────────
+approvals:
+  mode: "judgment-gated"
+  required_for:
+    - "kickoff"
+    - "design_direction"
+    - "voice_sample"
+    - "pre_launch"
+    - "outbound_comms"
+    - "monthly_report"
+    - "paid_app_install"
+  auto_approve_below_cost_usd: 0.50
+
+# ── FALLBACKS ───────────────────────────────────────────────────────────────
+fallbacks:
+  primary_keyword_source: ["client_brief", "dataforseo", "competitor_serp_scan", "ask_human"]
+  design_inspiration_source: ["client_pins", "competitor_sites", "dribbble", "ask_human"]
+  copy_reference_source: ["brand_voice_doc", "top_competitors", "past_projects", "ask_human"]
+  product_image_source: ["operator_supplied", "stock_library", "ai_generated", "ask_human"]
+  fulfillment_partner: ["shopify_fulfillment", "shipbob", "shipmonk", "ask_human"]

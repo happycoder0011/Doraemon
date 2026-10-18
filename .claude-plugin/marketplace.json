@@ -1,0 +1,39 @@
+{
+  "name": "webforge-marketplace",
+  "description": "WebForge Agency plugins. Modular orchestrator + niche vertical slices for the WebForge multi-agent system described in ARCHITECTURE.md. Install webforge (core) plus exactly one niche plugin for your client's type. Add webforge-ops for retainer clients.",
+  "owner": {
+    "name": "WebForge"
+  },
+  "plugins": [
+    {
+      "name": "webforge",
+      "source": "./plugins/webforge-core",
+      "description": "Core orchestrator. Director/Planner/Critic subagents, project.config.yaml schema and validator, and universal operator skills (/webforge:new-client, /webforge:show, /webforge:digest). Always install with one niche plugin."
+    },
+    {
+      "name": "webforge-saas",
+      "source": "./plugins/webforge-saas",
+      "description": "SaaS vertical slice. SaaS-tuned Discovery and SEO-Strategist subagents, plus Next.js build and Vercel deploy skills. For type=saas, template=nextjs-marketing, deployment_target=vercel."
+    },
+    {
+      "name": "webforge-local-services",
+      "source": "./plugins/webforge-local-services",
+      "description": "Local-services vertical slice. Discovery and local-tuned SEO-Strategist, plus WordPress build, Kinsta deploy, local SEO, citations, and site-audit skills. For type=local-services (plumber, dentist, lawyer, gym, HVAC, salon)."
+    },
+    {
+      "name": "webforge-ecommerce",
+      "source": "./plugins/webforge-ecommerce",
+      "description": "Ecommerce vertical slice. Discovery and ecommerce-tuned SEO-Strategist, plus Shopify build, product schema, review markup, and A/B test skills. For type=ecommerce."
+    },
+    {
+      "name": "webforge-personal-brand",
+      "source": "./plugins/webforge-personal-brand",
+      "description": "Personal-brand vertical slice. Discovery and personal-brand-tuned SEO-Strategist, plus Webflow build, calendar embed, and lead-magnet skills. For type=personal-brand (coach, consultant, creator, fractional exec)."
+    },
+    {
+      "name": "webforge-ops",
+      "source": "./plugins/webforge-ops",
+      "description": "Cross-cutting operations. Outreach, Analytics, and Content-Strategist agents, plus link-outreach, monthly-report, crisis-response, and gsc-monitor skills. Install with any niche plugin for retainer clients in the Iterate phase."
+    }
+  ]
+}

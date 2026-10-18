@@ -1,0 +1,114 @@
+# project.config.yaml — personal-brand starter
+# Adjust, then validate with:
+#
+#   python3 <webforge-core>/scripts/validate_config.py <this-file>
+
+project:
+  name: ""                              # the operator's full name or business name
+  slug: ""                              # often the operator's name, e.g. "morgan-lee"
+  type: "personal-brand"
+  goals:
+    primary: "leads"                    # most common; change to "sales" if e-commerce offer
+    secondary:
+      - "awareness"
+      - "rankings"
+  timeline: ""
+  start_date: ""
+
+# ── WHAT we build ───────────────────────────────────────────────────────────
+deliverables:
+  website:
+    required: true
+    pages:
+      - "home"
+      - "about"
+      - "work-with-me"
+      - "resources"
+      - "blog"
+      - "contact"
+      - "privacy"
+      - "terms"
+    template: "webflow-template"
+    responsive: true
+    i18n: false
+    cms: "webflow"
+    cms_admin_user: ""
+  content:
+    blog_posts_initial: 4               # 4 long-form posts as launch content
+    service_pages: 0
+    landing_pages: 1                    # lead magnet landing page
+  seo:
+    technical_audit: true
+    keyword_research: true              # thought-leadership keyword map
+    ongoing_months: 6
+    local_seo: false
+    geo: []
+    languages: ["en"]
+  outreach:
+    backlink_campaign: false            # personal brands earn links via content
+    citations_local: 0
+    guest_posts_per_month: 1            # podcast guesting is more common here
+  analytics:
+    gsc_setup: true
+    ga4_setup: true
+    monthly_reporting: true
+    dashboard: true
+
+# ── WHERE it runs ───────────────────────────────────────────────────────────
+infrastructure:
+  deployment_target: "webflow"
+  hosting_provider: "webflow"
+  domain: ""                            # often a personal domain
+  dns: "cloudflare"
+  email: "google_workspace"
+  cdn: "cloudflare"
+
+# ── HOW we operate ──────────────────────────────────────────────────────────
+operator:
+  expertise: "non-technical"            # the personal brand is rarely technical
+  judgment_strength: "high"
+  language: "en"
+  preferences:
+    communication_style: "concise"
+    report_format: "pdf"
+    meeting_cadence: "monthly"          # personal-brand clients typically meet less
+
+budget:
+  total_project_usd: 3000               # typical Starter-tier personal-brand build
+  monthly_retainer_usd: 200
+  per_run_cap_usd: 20
+
+# ── BRAND ───────────────────────────────────────────────────────────────────
+brand:
+  existing_brand_kit: false
+  voice_doc: ""
+  tone:
+    - "warm"
+    - "direct"
+    - "specific"
+  avoid_words:
+    - "synergy"
+    - "leverage"
+    - "best-in-class"
+    - "thought leader"                  # unless they actually are one
+
+# ── APPROVALS ──────────────────────────────────────────────────────────────
+approvals:
+  mode: "judgment-gated"
+  required_for:
+    - "kickoff"
+    - "design_direction"                # personal brands live or die here
+    - "voice_sample"                    # home + about page copy
+    - "pre_launch"
+    - "outbound_comms"
+    - "monthly_report"
+  auto_approve_below_cost_usd: 0.50
+
+# ── FALLBACKS ───────────────────────────────────────────────────────────────
+fallbacks:
+  primary_keyword_source: ["operator_existing_content", "linkedin_topics", "ask_human"]
+  design_inspiration_source: ["operator_pins", "competitor_personal_brands", "dribbble", "ask_human"]
+  copy_reference_source: ["operator_existing_posts", "newsletter_archive", "podcast_transcripts", "ask_human"]
+  positioning_source: ["operator_brief", "competitor_sites", "llm_inference", "ask_human"]
+  calendar_tool: ["cal.com", "calendly", "savvycal", "ask_human"]
+  email_tool: ["convertkit", "beehiiv", "mailchimp", "ask_human"]

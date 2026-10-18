@@ -1,0 +1,112 @@
+# project.config.yaml — local-services starter (plumber/dentist/lawyer/gym default)
+# This is a starting point for a local-services client. Adjust, then validate with:
+#
+#   python3 <webforge-core>/scripts/validate_config.py <this-file>
+
+project:
+  name: ""
+  slug: ""
+  type: "local-services"
+  goals:
+    primary: "leads"
+    secondary:
+      - "local-awareness"
+      - "repeat-customers"
+  timeline: ""
+  start_date: ""
+
+# ── WHAT we build ───────────────────────────────────────────────────────────
+deliverables:
+  website:
+    required: true
+    pages:
+      - "home"
+      - "services"
+      - "about"
+      - "contact"
+      - "service-area"
+      - "reviews"
+      - "blog"
+    template: "wordpress-theme"
+    responsive: true
+    i18n: false
+    cms: "wordpress"
+    cms_admin_user: ""
+  content:
+    blog_posts_initial: 4
+    service_pages: 6
+    landing_pages: 1                # emergency-services landing if applicable
+  seo:
+    technical_audit: true
+    keyword_research: true
+    ongoing_months: 6               # local SEO compounds; 6+ recommended
+    local_seo: true                 # REQUIRED for local-services
+    geo:
+      - ""                          # e.g. "Brooklyn, NY"
+    languages: ["en"]
+  outreach:
+    backlink_campaign: false        # citations matter more for local
+    citations_local: 15             # directory listings
+    guest_posts_per_month: 0
+  analytics:
+    gsc_setup: true
+    ga4_setup: true
+    monthly_reporting: true
+    dashboard: true
+
+# ── WHERE it runs ───────────────────────────────────────────────────────────
+infrastructure:
+  deployment_target: "wp-hosting"   # wp-hosting | aws (NOT vercel/cloudflare)
+  hosting_provider: "kinsta"        # kinsta | wpengine | pressable | other
+  domain: ""
+  dns: "cloudflare"
+  email: "google_workspace"
+  cdn: "cloudflare"
+
+# ── HOW we operate ──────────────────────────────────────────────────────────
+operator:
+  expertise: "non-technical"
+  judgment_strength: "high"
+  language: "en"
+  preferences:
+    communication_style: "concise"
+    report_format: "pdf"
+    meeting_cadence: "biweekly"
+
+budget:
+  total_project_usd: 2500
+  monthly_retainer_usd: 400
+  per_run_cap_usd: 20
+
+# ── BRAND ───────────────────────────────────────────────────────────────────
+brand:
+  existing_brand_kit: false
+  voice_doc: ""
+  tone:
+    - "trustworthy"
+    - "approachable"
+    - "local-expert"
+  avoid_words:
+    - "cheap"
+    - "discount"
+    - "lowest price"
+
+# ── APPROVALS ──────────────────────────────────────────────────────────────
+approvals:
+  mode: "judgment-gated"
+  required_for:
+    - "kickoff"
+    - "design_direction"
+    - "voice_sample"
+    - "pre_launch"
+    - "outbound_comms"
+    - "monthly_report"
+  auto_approve_below_cost_usd: 0.50
+
+# ── FALLBACKS ───────────────────────────────────────────────────────────────
+fallbacks:
+  primary_keyword_source: ["client_brief", "dataforseo", "gbp_insights", "ask_human"]
+  design_inspiration_source: ["client_pins", "competitor_sites", "dribbble", "ask_human"]
+  copy_reference_source: ["brand_voice_doc", "top10_local_competitors", "past_projects", "ask_human"]
+  nap_source: ["client_brief", "existing_site", "ask_human"]
+  review_baseline_source: ["gbp_api", "manual_scrape", "ask_human"]

@@ -1,0 +1,95 @@
+# project.config.yaml — WebForge project source of truth
+# Edit fields after running /webforge:new-client. Schema lives at
+# templates/project.config.schema.json in the webforge plugin. Validate with:
+#
+#   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/validate_config.py <this-file>
+
+project:
+  name: ""                              # e.g. "Acme Plumbing Co"
+  slug: ""                              # e.g. "acme-plumbing" — lowercase, hyphens
+  type: ""                              # local-services | saas | ecommerce | info-site | personal-brand | agency
+  goals:
+    primary: ""                         # leads | sales | awareness | signups | rankings
+    secondary: []                       # e.g. ["local-awareness", "repeat-customers"]
+  timeline: ""
+  start_date: ""
+
+# ── WHAT we build ───────────────────────────────────────────────────────────
+deliverables:
+  website:
+    required: true
+    pages: []
+    template: ""                        # nextjs-marketing | wordpress-theme | webflow-template | html-static | shopify-theme
+    responsive: true
+    i18n: false
+    cms: ""                             # wordpress | webflow | shopify | sanity | contentful | markdown | none
+    cms_admin_user: ""
+  content:
+    blog_posts_initial: 0
+    service_pages: 0
+    landing_pages: 0
+  seo:
+    technical_audit: false
+    keyword_research: false
+    ongoing_months: 0
+    local_seo: false
+    geo: []
+    languages: []
+  outreach:
+    backlink_campaign: false
+    citations_local: 0
+    guest_posts_per_month: 0
+  analytics:
+    gsc_setup: false
+    ga4_setup: false
+    monthly_reporting: false
+    dashboard: false
+
+# ── WHERE it runs ───────────────────────────────────────────────────────────
+infrastructure:
+  deployment_target: ""                 # vercel | cloudflare | netlify | aws | wp-hosting | shopify | webflow
+  hosting_provider: ""
+  domain: ""
+  dns: ""                                # cloudflare | route53 | namecheap | other
+  email: ""                              # google_workspace | microsoft_365 | other
+  cdn: ""
+
+# ── HOW we operate ──────────────────────────────────────────────────────────
+operator:
+  expertise: "non-technical"            # non-technical | technical | developer
+  judgment_strength: "high"            # high | medium
+  language: "en"
+  preferences:
+    communication_style: "concise"     # concise | detailed
+    report_format: "pdf"               # pdf | html | markdown
+    meeting_cadence: "biweekly"
+
+budget:
+  total_project_usd: 0
+  monthly_retainer_usd: 0
+  per_run_cap_usd: 20
+
+# ── BRAND ───────────────────────────────────────────────────────────────────
+brand:
+  existing_brand_kit: false
+  voice_doc: ""
+  tone: []
+  avoid_words: []
+
+# ── APPROVALS ──────────────────────────────────────────────────────────────
+approvals:
+  mode: "judgment-gated"               # judgment-gated | technical-gated | minimal
+  required_for:
+    - "kickoff"
+    - "design_direction"
+    - "voice_sample"
+    - "pre_launch"
+    - "outbound_comms"
+    - "monthly_report"
+  auto_approve_below_cost_usd: 0.50
+
+# ── FALLBACKS ───────────────────────────────────────────────────────────────
+fallbacks:
+  primary_keyword_source: ["client_brief", "dataforseo", "llm_inference", "ask_human"]
+  design_inspiration_source: ["client_pins", "competitor_sites", "dribbble", "ask_human"]
+  copy_reference_source: ["brand_voice_doc", "top10_serp_results", "past_projects", "ask_human"]

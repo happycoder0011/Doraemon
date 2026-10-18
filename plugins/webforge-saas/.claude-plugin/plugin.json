@@ -1,0 +1,14 @@
+{
+  "name": "webforge-saas",
+  "version": "0.1.0",
+  "description": "WebForge vertical slice for SaaS clients. SaaS-tuned Discovery and SEO-Strategist subagents, plus Next.js build and Vercel deploy skills. Use with webforge core to ship a SaaS landing page + blog end-to-end. Designed for type=saas, template=nextjs-marketing, deployment_target=vercel.",
+  "author": {
+    "name": "WebForge"
+  },
+  "keywords": [
+    "saas",
+    "nextjs",
+    "vercel",
+    "vertical-slice"
+  ]
+}

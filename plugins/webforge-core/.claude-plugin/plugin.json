@@ -1,0 +1,14 @@
+{
+  "name": "webforge",
+  "version": "0.1.0",
+  "description": "WebForge Agency orchestrator. Director/Planner/Critic subagents, the project.config.yaml config system, and universal operator skills (/webforge:new-client, /webforge:show, /webforge:digest). Pair with webforge-saas (or another niche plugin) to ship end-to-end work for a client.",
+  "author": {
+    "name": "WebForge"
+  },
+  "keywords": [
+    "agency",
+    "orchestrator",
+    "config-driven",
+    "multi-agent"
+  ]
+}

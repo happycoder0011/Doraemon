@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://webforge.agency/schemas/project.config.schema.json",
+  "title": "WebForge project.config.yaml",
+  "description": "Single source of truth for a WebForge client. Drives agent activation, infrastructure choices, and approval gates.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["project", "deliverables", "infrastructure", "operator", "budget"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name", "slug", "type", "goals"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$" },
+        "type": { "enum": ["local-services", "saas", "ecommerce", "info-site", "personal-brand", "agency"] },
+        "goals": {
+          "type": "object",
+          "required": ["primary"],
+          "properties": {
+            "primary": { "enum": ["leads", "sales", "awareness", "signups", "rankings"] },
+            "secondary": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "timeline": { "type": "string" },
+        "start_date": { "type": "string", "format": "date" }
+      }
+    },
+    "deliverables": {
+      "type": "object",
+      "properties": {
+        "website": { "$ref": "#/$defs/website" },
+        "content": {
+          "type": "object",
+          "properties": {
+            "blog_posts_initial": { "type": "integer", "minimum": 0 },
+            "service_pages": { "type": "integer", "minimum": 0 },
+            "landing_pages": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "seo": {
+          "type": "object",
+          "properties": {
+            "technical_audit": { "type": "boolean" },
+            "keyword_research": { "type": "boolean" },
+            "ongoing_months": { "type": "integer", "minimum": 0 },
+            "local_seo": { "type": "boolean" },
+            "geo": { "type": "array", "items": { "type": "string" } },
+            "languages": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "outreach": {
+          "type": "object",
+          "properties": {
+            "backlink_campaign": { "type": "boolean" },
+            "citations_local": { "type": "integer", "minimum": 0 },
+            "guest_posts_per_month": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "analytics": {
+          "type": "object",
+          "properties": {
+            "gsc_setup": { "type": "boolean" },
+            "ga4_setup": { "type": "boolean" },
+            "monthly_reporting": { "type": "boolean" },
+            "dashboard": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "infrastructure": {
+      "type": "object",
+      "required": ["deployment_target"],
+      "properties": {
+        "deployment_target": {
+          "enum": ["vercel", "cloudflare", "netlify", "aws", "wp-hosting", "shopify", "webflow"]
+        },
+        "hosting_provider": { "type": "string" },
+        "domain": { "type": "string" },
+        "dns": { "enum": ["cloudflare", "route53", "namecheap", "other"] },
+        "email": { "enum": ["google_workspace", "microsoft_365", "other"] },
+        "cdn": { "type": "string" }
+      }
+    },
+    "operator": {
+      "type": "object",
+      "required": ["expertise"],
+      "properties": {
+        "expertise": { "enum": ["non-technical", "technical", "developer"] },
+        "judgment_strength": { "enum": ["high", "medium"] },
+        "language": { "type": "string" },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "communication_style": { "enum": ["concise", "detailed"] },
+            "report_format": { "enum": ["pdf", "html", "markdown"] },
+            "meeting_cadence": { "type": "string" }
+          }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["per_run_cap_usd"],
+      "properties": {
+        "total_project_usd": { "type": "number", "minimum": 0 },
+        "monthly_retainer_usd": { "type": "number", "minimum": 0 },
+        "per_run_cap_usd": { "type": "number", "minimum": 0 }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "existing_brand_kit": { "type": "boolean" },
+        "voice_doc": { "type": "string" },
+        "tone": { "type": "array", "items": { "type": "string" } },
+        "avoid_words": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "properties": {
+        "mode": { "enum": ["judgment-gated", "technical-gated", "minimal"] },
+        "required_for": { "type": "array", "items": { "type": "string" } },
+        "auto_approve_below_cost_usd": { "type": "number", "minimum": 0 }
+      }
+    },
+    "fallbacks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" },
+        "minItems": 1
+      }
+    }
+  },
+  "$defs": {
+    "website": {
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean" },
+        "pages": { "type": "array", "items": { "type": "string" } },
+        "template": {
+          "enum": ["nextjs-marketing", "wordpress-theme", "webflow-template", "html-static", "shopify-theme"]
+        },
+        "responsive": { "type": "boolean" },
+        "i18n": { "type": "boolean" },
+        "cms": {
+          "enum": ["wordpress", "webflow", "shopify", "sanity", "contentful", "markdown", "none"]
+        },
+        "cms_admin_user": { "type": "string", "format": "email" }
+      }
+    }
+  }
+}

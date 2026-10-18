@@ -1,0 +1,94 @@
+# project.config.yaml — ops retainer starter
+# This template is for clients in the Iterate phase (retainer). Layer on top of
+# any niche config — local-services, ecommerce, saas, personal-brand.
+#
+# Validate with:
+#
+#   python3 <webforge-core>/scripts/validate_config.py <this-file>
+
+project:
+  name: ""
+  slug: ""
+  type: ""                              # retain the niche type from base config
+  goals:
+    primary: ""
+    secondary: []
+  timeline: ""
+  start_date: ""
+
+# ── WHAT we build (retainer focus) ──────────────────────────────────────────
+deliverables:
+  website:
+    required: false                    # already built; don't redeploy
+    pages: []
+    template: ""
+    responsive: true
+    i18n: false
+    cms: ""
+    cms_admin_user: ""
+  content:
+    blog_posts_initial: 0
+    service_pages: 0
+    landing_pages: 0
+  seo:
+    technical_audit: false             # done at launch; refresh quarterly
+    keyword_research: true               # ongoing refresh
+    ongoing_months: 12                 # retainer
+    local_seo: false
+    geo: []
+    languages: ["en"]
+  outreach:
+    backlink_campaign: true
+    citations_local: 0
+    guest_posts_per_month: 2
+  analytics:
+    gsc_setup: true
+    ga4_setup: true
+    monthly_reporting: true
+    dashboard: true
+
+# ── WHERE it runs ───────────────────────────────────────────────────────────
+infrastructure:
+  deployment_target: ""
+  hosting_provider: ""
+  domain: ""
+  dns: ""
+  email: ""
+  cdn: ""
+
+# ── HOW we operate ──────────────────────────────────────────────────────────
+operator:
+  expertise: "non-technical"
+  judgment_strength: "high"
+  language: "en"
+  preferences:
+    communication_style: "concise"
+    report_format: "pdf"
+    meeting_cadence: "monthly"
+
+budget:
+  total_project_usd: 9600              # 12 months × $800/mo retainer (proxy for "total engagement cost")
+  monthly_retainer_usd: 800            # standard retainer
+  per_run_cap_usd: 50
+
+# ── BRAND ───────────────────────────────────────────────────────────────────
+brand:
+  existing_brand_kit: true             # should exist by retainer
+  voice_doc: ""
+  tone: []
+  avoid_words: []
+
+# ── APPROVALS ──────────────────────────────────────────────────────────────
+approvals:
+  mode: "judgment-gated"
+  required_for:
+    - "monthly_report"
+    - "outbound_comms"
+    - "crisis_response"                # any high-stakes recovery action
+  auto_approve_below_cost_usd: 5.00    # slightly higher — retainer trust
+
+# ── FALLBACKS ───────────────────────────────────────────────────────────────
+fallbacks:
+  primary_keyword_source: ["client_brief", "gsc_data", "competitor_serp_scan", "ask_human"]
+  content_topic_source: ["gsc_query_data", "competitor_content", "operator_ideas", "ask_human"]
+  outreach_prospect_source: ["niche_specific_search", "hunter_io", "apollo_io", "ask_human"]

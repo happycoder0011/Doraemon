@@ -1,0 +1,16 @@
+{
+  "name": "webforge-ops",
+  "version": "1.0.0",
+  "description": "WebForge cross-cutting operations plugin. Outreach, Analytics, and Content-Strategist agents, plus link-outreach, monthly-report, crisis-response, and gsc-monitor skills. Install alongside any niche plugin to enable the Iterate phase (retainer clients).",
+  "author": {
+    "name": "WebForge"
+  },
+  "keywords": [
+    "ops",
+    "outreach",
+    "analytics",
+    "monthly-report",
+    "crisis-response",
+    "retainer"
+  ]
+}

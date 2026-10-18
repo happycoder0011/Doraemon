@@ -1,0 +1,16 @@
+{
+  "name": "webforge-personal-brand",
+  "version": "1.0.0",
+  "description": "WebForge vertical slice for personal-brand clients (coach, consultant, creator, fractional exec). Discovery and personal-brand-tuned SEO-Strategist, plus Webflow build, calendar embed, and lead magnet skills. Use for type=personal-brand, deployment_target=webflow.",
+  "author": {
+    "name": "WebForge"
+  },
+  "keywords": [
+    "personal-brand",
+    "webflow",
+    "coach",
+    "consultant",
+    "calendar",
+    "lead-magnet"
+  ]
+}

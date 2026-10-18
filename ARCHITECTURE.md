@@ -817,4 +817,73 @@ Things I'd want your input on before building:
 
 ---
 
+## 21. Distribution
+
+The orchestrator + per-niche specialists are packaged as **Claude Code plugins** and live alongside this doc:
+
+```
+.claude-plugin/marketplace.json     # marketplace manifest, source ./plugins/
+plugins/
+├── webforge-core/                  # plugin name: webforge
+│   ├── agents/{director,planner,critic}.md
+│   ├── skills/{new-client,show-status,daily-digest}/SKILL.md
+│   ├── scripts/validate_config.py
+│   └── templates/{project.config.schema.json, project.config.yaml.example}
+├── webforge-saas/                  # plugin name: webforge-saas
+│   ├── agents/{discovery,seo-strategist}.md
+│   └── skills/{nextjs-build,vercel-deploy}/SKILL.md
+├── webforge-local-services/        # plugin name: webforge-local-services
+│   ├── agents/{discovery,seo-strategist,frontend-eng,seo-tech}.md
+│   └── skills/{wordpress-build,kinsta-deploy,local-seo,citations,site-audit}/SKILL.md
+├── webforge-ecommerce/             # plugin name: webforge-ecommerce
+│   ├── agents/{discovery,seo-strategist,copywriter,frontend-eng}.md
+│   └── skills/{shopify-build,product-schema,review-markup,ab-test}/SKILL.md
+├── webforge-personal-brand/        # plugin name: webforge-personal-brand
+│   ├── agents/{discovery,seo-strategist,copywriter,designer,ia-architect}.md
+│   └── skills/{webflow-build,calendar-embed,lead-magnet}/SKILL.md
+└── webforge-ops/                   # plugin name: webforge-ops (cross-cutting)
+    ├── agents/{outreach,analytics,content-strategist}.md
+    └── skills/{link-outreach,monthly-report,crisis-response,gsc-monitor}/SKILL.md
+```
+
+**Why a plugin family, not a single plugin:** skills and agents load their names + descriptions into every session's context (see Claude docs on plugin context cost). A single mega-plugin carrying every niche would burn 3k+ tokens per turn even when only one type of client is active. The split keeps a typical client (core + 1 niche + ops) at ~1.5k always-on tokens, and lets a local-services client install only `webforge` + `webforge-local-services`.
+
+**Why `webforge` is the orchestrator name:** the prefix on every skill (`/webforge:new-client`) and every agent (`webforge:director`) comes from this plugin's manifest. Niche plugins keep their own names (`webforge-saas:discovery`).
+
+**Install (from this repo):**
+
+```bash
+claude plugin marketplace add ./
+# Always install core + one niche:
+claude plugin install webforge@webforge-marketplace
+claude plugin install webforge-local-services@webforge-marketplace   # or any other niche
+# Add ops for retainer clients (Iterate phase):
+claude plugin install webforge-ops@webforge-marketplace
+```
+
+Or for development without install:
+
+```bash
+claude --plugin-dir ./plugins/webforge-core \
+       --plugin-dir ./plugins/webforge-local-services \
+       --plugin-dir ./plugins/webforge-ops
+```
+
+**Plugin inventory (v1.0):**
+
+| Plugin | Always-on cost | Components |
+|---|---|---|
+| `webforge` (core) | ~447 tok | 3 agents, 3 skills, validator script, schema |
+| `webforge-saas` | ~311 tok | 2 agents, 2 skills |
+| `webforge-local-services` | ~670 tok | 4 agents, 5 skills |
+| `webforge-ecommerce` | ~595 tok | 4 agents, 4 skills |
+| `webforge-personal-brand` | ~576 tok | 5 agents, 3 skills |
+| `webforge-ops` | ~448 tok | 3 agents, 4 skills |
+| **Full install** | **~3,047 tok** | **21 agents, 21 skills** |
+
+**Typical client setup:** `webforge` + 1 niche = ~750–1,200 tokens.
+**Retainer client setup:** `webforge` + 1 niche + `webforge-ops` = ~1,200–1,700 tokens.
+
+---
+
 **Next step:** approve this doc, then I'll scaffold the repo per §15 (foundation + Operator Experience + first 2 build skills: Discovery + SEO Audit) end-to-end on a real or sandbox client. We'll pick a config template and a first client to validate the whole flow.

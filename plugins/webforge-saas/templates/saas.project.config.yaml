@@ -1,0 +1,112 @@
+# project.config.yaml — SaaS starter (B2B SaaS default)
+# This is a starting point for a SaaS client. Adjust, then validate with:
+#
+#   python3 <webforge-core>/scripts/validate_config.py <this-file>
+
+project:
+  name: ""                              # required
+  slug: ""                              # required, kebab-case
+  type: "saas"
+  goals:
+    primary: "signups"                  # most common SaaS goal
+    secondary:
+      - "rankings"
+      - "awareness"
+  timeline: ""
+  start_date: ""
+
+# ── WHAT we build ───────────────────────────────────────────────────────────
+deliverables:
+  website:
+    required: true
+    pages:
+      - "home"
+      - "pricing"
+      - "features"
+      - "blog"
+      - "docs"
+      - "about"
+      - "contact"
+      - "changelog"
+    template: "nextjs-marketing"
+    responsive: true
+    i18n: false                         # flip true if you go multi-language
+    cms: "sanity"                       # sanity | contentful | markdown | none
+    cms_admin_user: ""
+  content:
+    blog_posts_initial: 12              # 90-day calendar from strategy phase
+    service_pages: 0                    # N/A for SaaS
+    landing_pages: 1                    # one comparison LP for paid acquisition
+  seo:
+    technical_audit: true
+    keyword_research: true
+    ongoing_months: 6                   # SaaS compounds over time; 6+ recommended
+    local_seo: false                    # not applicable for SaaS
+    geo: []
+    languages: ["en"]
+  outreach:
+    backlink_campaign: true             # comparison posts earn links naturally
+    citations_local: 0
+    guest_posts_per_month: 2
+  analytics:
+    gsc_setup: true
+    ga4_setup: true
+    monthly_reporting: true
+    dashboard: true
+
+# ── WHERE it runs ───────────────────────────────────────────────────────────
+infrastructure:
+  deployment_target: "vercel"
+  hosting_provider: "vercel"
+  domain: ""
+  dns: "cloudflare"                     # common SaaS pair
+  email: "google_workspace"
+  cdn: "cloudflare"
+
+# ── HOW we operate ──────────────────────────────────────────────────────────
+operator:
+  expertise: "non-technical"
+  judgment_strength: "high"
+  language: "en"
+  preferences:
+    communication_style: "concise"
+    report_format: "pdf"
+    meeting_cadence: "biweekly"
+
+budget:
+  total_project_usd: 5000               # typical Growth-tier SaaS build
+  monthly_retainer_usd: 400
+  per_run_cap_usd: 20
+
+# ── BRAND ───────────────────────────────────────────────────────────────────
+brand:
+  existing_brand_kit: false
+  voice_doc: ""
+  tone:
+    - "clear"
+    - "confident"
+    - "non-corporate"
+  avoid_words:
+    - "synergy"
+    - "leverage"
+    - "best-in-class"
+    - "revolutionary"
+
+# ── APPROVALS ──────────────────────────────────────────────────────────────
+approvals:
+  mode: "judgment-gated"
+  required_for:
+    - "kickoff"
+    - "design_direction"
+    - "voice_sample"
+    - "pre_launch"
+    - "outbound_comms"
+    - "monthly_report"
+  auto_approve_below_cost_usd: 0.50
+
+# ── FALLBACKS ───────────────────────────────────────────────────────────────
+fallbacks:
+  primary_keyword_source: ["client_brief", "dataforseo", "competitor_serp_scan", "ask_human"]
+  design_inspiration_source: ["client_pins", "competitor_sites", "dribbble", "ask_human"]
+  copy_reference_source: ["brand_voice_doc", "competitor_sites", "top10_serp_results", "ask_human"]
+  value_prop_source: ["client_brief", "competitor_homepages", "llm_inference", "ask_human"]

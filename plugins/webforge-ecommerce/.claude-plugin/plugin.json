@@ -1,0 +1,15 @@
+{
+  "name": "webforge-ecommerce",
+  "version": "1.0.0",
+  "description": "WebForge vertical slice for ecommerce clients. Discovery and ecommerce-tuned SEO-Strategist, plus Shopify build, product schema, review markup, and A/B test skills. Use for type=ecommerce, deployment_target=shopify.",
+  "author": {
+    "name": "WebForge"
+  },
+  "keywords": [
+    "ecommerce",
+    "shopify",
+    "product-schema",
+    "reviews",
+    "ab-test"
+  ]
+}
